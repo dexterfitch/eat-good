@@ -17,16 +17,17 @@
           <h2>Restaurants</h2>
           <ul>
             <li ng-repeat="item in restaurants">
-              <a href="{{item.website}}">{{item.name}}</a> - {{item.spendyText}} <a ng-click="deleteRestaurant(item)"><span class="glyphicon glyphicon-remove"></span></a>
+              <a href="{{item.website}}">{{item.name}}</a> - {{item.cuisine}} - {{item.spendyText}} <a ng-click="deleteRestaurant(item)"><span class="glyphicon glyphicon-remove"></span></a>
             </li>
           </ul>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-12">
           <h3>Add Restaurant</h3>
           <form ng-submit="addRestaurant()" class="form-inline" id="new-restaurant" role="form">
             <div class="form-group">
               <input type="text" ng-model="restaurantName" class="form-control" placeholder="Name" required="true">
               <input type="text" ng-model="restaurantWebsite" class="form-control" placeholder="Website">
+              <input type="text" ng-model="restaurantCuisine" class="form-control" placeholder="Cuisine">
               <select ng-model="restaurantSpendyLevel" class="form-control" form="new-restaurant">
                 <option value="" style="display:none">Spendy Level</option>
                 <option value="1">Under $8</option>
@@ -35,8 +36,8 @@
                 <option value="4">$26 - $35</option>
                 <option value="5">Over $35</option>
               </select>
-              <button type="submit" class="btn btn-info">Submit</button>
             </div>
+            <button type="submit" class="btn btn-info">Submit</button>
           </form>
         </div>
       </div>

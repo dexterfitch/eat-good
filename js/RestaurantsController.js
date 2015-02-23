@@ -19,12 +19,14 @@ restaurantList.controller('RestaurantsCtrl', function RestaurantsCtrl($scope) {
     $scope.restaurants.push({
       name: $scope.restaurantName,
       website: $scope.restaurantWebsite,
+      cuisine: $scope.restaurantCuisine,
       spendyText: spendyLevelToText,
       spendyLevel: $scope.restaurantSpendyLevel
     });
 
     $scope.restaurantName = null;
     $scope.restaurantWebsite = null;
+    $scope.restaurantCuisine = null;
     $scope.restaurantSpendyLevel = "";
   };
 
