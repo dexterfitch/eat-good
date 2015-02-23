@@ -17,9 +17,27 @@
           <h2>Restaurants</h2>
           <ul>
             <li ng-repeat="item in restaurants">
-              {{item.name}}
+              <a href="{{item.website}}">{{item.name}}</a> - {{item.spendyText}}
             </li>
           </ul>
+        </div>
+        <div class="col-md-6">
+          <h3>Add Restaurant</h3>
+          <form ng-submit="addRestaurant()" class="form-inline" id="new-restaurant" role="form">
+            <div class="form-group">
+              <input type="text" ng-model="restaurantName" class="form-control" placeholder="Name" required="true">
+              <input type="text" ng-model="restaurantWebsite" class="form-control" placeholder="Website">
+              <select ng-model="restaurantSpendyLevel" class="form-control" form="new-restaurant">
+                <option value="" style="display:none">Spendy Level</option>
+                <option value="1">Under $8</option>
+                <option value="2">$8 - $15</option>
+                <option value="3">$16 - $25</option>
+                <option value="4">$26 - $35</option>
+                <option value="5">over $35</option>
+              </select>
+              <button type="submit" class="btn btn-info">Submit</button>
+            </div>
+          </form>
         </div>
       </div>
     </div>
