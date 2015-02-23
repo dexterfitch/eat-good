@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="restaurantList">
+  <head>
+    <meta charset="UTF-8">
+    <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="css/styles.css" rel="stylesheet" type="text/css">
+    <script src="lib/angular.js"></script>
+    <script src="app.js"></script>
+    <script src="js/RestaurantsController.js"></script>
+
+    <title>Eat Good</title>
+  </head>
+  <body>
+    <div class="container" ng-controller="RestaurantsCtrl">
+      <div class="row">
+        <div class="col-md-12">
+          <h2>Restaurants</h2>
+          <ul>
+            <li ng-repeat="item in restaurants">
+              {{item.name}}
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
