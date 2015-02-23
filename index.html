@@ -12,23 +12,55 @@
   </head>
   <body>
     <div class="container" ng-controller="RestaurantsCtrl">
-      <div class="row">
-        <div class="col-md-12">
-          <h2>Restaurants</h2>
-          <ul>
-            <li ng-repeat="item in restaurants">
-              <a href="{{item.website}}">{{item.name}}</a> - {{item.cuisine}} - {{item.spendyText}} <a ng-click="deleteRestaurant(item)"><span class="glyphicon glyphicon-remove"></span></a>
+      <h1>Eat Good</h1>
+
+      <div class="row" ng-show="restaurants.length">
+        <div class="col-md-8">
+          <h3 ng-show="restaurants.length && filter.length">Restaurants</h3>
+          <h3 ng-show="restaurants.length && !filter.length">No Matches</h3>
+          <ul class="list-unstyled">
+            <li ng-repeat="item in filter = (restaurants | filter:query)">
+              <span ng-hide="editing">
+                <a href="{{item.website}}">{{item.name}}</a> - {{item.cuisine}} - {{ createSpendyText(item.spendyLevel) }} <span ng-click="editing = true" class="glyphicon glyphicon-cog"></span> <a ng-click="deleteRestaurant(item)"><span class="glyphicon glyphicon-remove"></span></a>
+              </span>
+              <span class="form-group" ng-show="editing" ng-submit="editing = false">
+                <form class="form-inline" role="form">
+                  <input type="text" class="form-control input-sm" ng-model="item.name" placeholder="Edit name">
+                  <input type="text" class="form-control input-sm" ng-model="item.website" placeholder="Edit website">
+                  <input type="text" class="form-control input-sm" ng-model="item.cuisine" placeholder="Edit cuisine">
+                  <select class="form-control input-sm" ng-model="item.spendyLevel">
+                    <option value="" style="display:none">Spendy Level</option>
+                    <option value="1">Under $8</option>
+                    <option value="2">$8 - $15</option>
+                    <option value="3">$16 - $25</option>
+                    <option value="4">$26 - $35</option>
+                    <option value="5">Over $35</option>
+                  </select>
+                  <button class="btn btn-success btn-sm" type="submit">Save</button>
+                </form>
+              </span>
             </li>
           </ul>
         </div>
+        <div class="col-md-4">
+          <h3>Search Restaurants</h3>
+          <form class="form-inline" role="form">
+            <div class="form-group">
+              <input ng-model="query" type="text" class="form-control input-sm" placeholder="Search">
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div class="row">
         <div class="col-md-12">
           <h3>Add Restaurant</h3>
           <form ng-submit="addRestaurant()" class="form-inline" id="new-restaurant" role="form">
             <div class="form-group">
-              <input type="text" ng-model="restaurantName" class="form-control" placeholder="Name" required="true">
-              <input type="text" ng-model="restaurantWebsite" class="form-control" placeholder="Website">
-              <input type="text" ng-model="restaurantCuisine" class="form-control" placeholder="Cuisine">
-              <select ng-model="restaurantSpendyLevel" class="form-control" form="new-restaurant">
+              <input type="text" class="form-control" ng-model="restaurantName" placeholder="Name" required="true">
+              <input type="text" class="form-control" ng-model="restaurantWebsite" placeholder="Website">
+              <input type="text" class="form-control" ng-model="restaurantCuisine" placeholder="Cuisine">
+              <select class="form-control" ng-model="restaurantSpendyLevel">
                 <option value="" style="display:none">Spendy Level</option>
                 <option value="1">Under $8</option>
                 <option value="2">$8 - $15</option>

@@ -1,4 +1,5 @@
 .glyphicon {
-  padding: 0 10px;
+  padding-left: 10px;
   cursor: pointer;
+  color: #00BC8C;
 }
