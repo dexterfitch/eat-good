@@ -17,7 +17,7 @@
           <h2>Restaurants</h2>
           <ul>
             <li ng-repeat="item in restaurants">
-              <a href="{{item.website}}">{{item.name}}</a> - {{item.spendyText}}
+              <a href="{{item.website}}">{{item.name}}</a> - {{item.spendyText}} <a ng-click="deleteRestaurant(item)"><span class="glyphicon glyphicon-remove"></span></a>
             </li>
           </ul>
         </div>

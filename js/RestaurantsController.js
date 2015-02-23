@@ -28,4 +28,9 @@ restaurantList.controller('RestaurantsCtrl', function RestaurantsCtrl($scope) {
     $scope.restaurantSpendyLevel = "";
   };
 
+  $scope.deleteRestaurant = function(restaurant) {
+    var index = $scope.restaurants.indexOf(restaurant);
+    $scope.restaurants.splice(index, 1);
+  };
+
 });
