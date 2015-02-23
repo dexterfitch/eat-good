@@ -3,6 +3,7 @@ restaurantList.controller('RestaurantsCtrl', function RestaurantsCtrl($scope) {
 
   $scope.addRestaurant = function() {
     var spendyLevelToText = "";
+
     if ($scope.restaurantSpendyLevel === "1") {
       spendyLevelToText = "Under $8"
     } else if ($scope.restaurantSpendyLevel === "2") {
@@ -12,10 +13,16 @@ restaurantList.controller('RestaurantsCtrl', function RestaurantsCtrl($scope) {
     } else if ($scope.restaurantSpendyLevel === "4") {
       spendyLevelToText = "$26 - $35"
     } else {
-      spendyLevelToText = "over $35"
+      spendyLevelToText = "Over $35"
     }
 
-    $scope.restaurants.push({ name: $scope.restaurantName, website: $scope.restaurantWebsite, spendyText: spendyLevelToText, spendyLevel: $scope.restaurantSpendyLevel });
+    $scope.restaurants.push({
+      name: $scope.restaurantName,
+      website: $scope.restaurantWebsite,
+      spendyText: spendyLevelToText,
+      spendyLevel: $scope.restaurantSpendyLevel
+    });
+
     $scope.restaurantName = null;
     $scope.restaurantWebsite = null;
     $scope.restaurantSpendyLevel = "";
