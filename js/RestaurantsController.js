@@ -25,13 +25,15 @@ restaurantList.controller('RestaurantsCtrl', function RestaurantsCtrl($scope) {
       name: $scope.restaurantName,
       website: $scope.restaurantWebsite,
       cuisine: $scope.restaurantCuisine,
-      spendyLevel: $scope.restaurantSpendyLevel
+      spendyLevel: $scope.restaurantSpendyLevel,
+      outdoorSeating: $scope.restaurantOutdoorSeating
     });
 
     $scope.restaurantName = null;
     $scope.restaurantWebsite = null;
     $scope.restaurantCuisine = null;
     $scope.restaurantSpendyLevel = "";
+    $scope.restaurantOutdoorSeating = false;
   };
 
   $scope.deleteRestaurant = function(restaurant) {

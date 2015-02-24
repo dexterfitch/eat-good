@@ -21,7 +21,8 @@
           <ul class="list-unstyled">
             <li ng-repeat="item in filter = (restaurants | filter:query)">
               <span ng-hide="editing">
-                <a href="{{item.website}}">{{item.name}}</a> - {{item.cuisine}} - {{ createSpendyText(item.spendyLevel) }} <span ng-click="editing = true" class="glyphicon glyphicon-cog"></span> <a ng-click="deleteRestaurant(item)"><span class="glyphicon glyphicon-remove"></span></a>
+                <a href="{{item.website}}">{{item.name}}</a> - {{item.cuisine}}
+                - {{ createSpendyText(item.spendyLevel) }} - Outdoor seating:<span ng-if="item.outdoorSeating === true"><span class="glyphicon glyphicon-sunglasses"></span></span><span ng-if="item.outdoorSeating !== true"><span class="glyphicon glyphicon-thumbs-down"></span></span>&nbsp;&nbsp;&nbsp;|<span ng-click="editing = true" class="glyphicon glyphicon-cog clicky"></span> <a ng-click="deleteRestaurant(item)"><span class="glyphicon glyphicon-remove clicky"></span></a>
               </span>
               <span class="form-group" ng-show="editing" ng-submit="editing = false">
                 <form class="form-inline" role="form">
@@ -36,6 +37,7 @@
                     <option value="4">$26 - $35</option>
                     <option value="5">Over $35</option>
                   </select>
+                  <input type="checkbox" class="form-control input-sm" ng-model="item.outdoorSeating">Outdoor seating
                   <button class="btn btn-success btn-sm" type="submit">Save</button>
                 </form>
               </span>
@@ -68,8 +70,10 @@
                 <option value="4">$26 - $35</option>
                 <option value="5">Over $35</option>
               </select>
-            </div>
             <button type="submit" class="btn btn-info">Submit</button>
+          </div>
+          <br>
+          <input type="checkbox" class="form-control input-sm" ng-model="restaurantOutdoorSeating"> Outdoor seating?
           </form>
         </div>
       </div>

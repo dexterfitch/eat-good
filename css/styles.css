@@ -1,5 +1,8 @@
 .glyphicon {
   padding-left: 10px;
+}
+
+.clicky {
   cursor: pointer;
   color: #00BC8C;
 }
