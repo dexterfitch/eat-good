@@ -20,10 +20,25 @@
           <h3 ng-show="restaurants.length && !filter.length">No Matches</h3>
           <ul class="list-unstyled">
             <li ng-repeat="item in filter = (restaurants | filter:query)">
+
               <span ng-hide="editing">
-                <a href="{{item.website}}">{{item.name}}</a> - {{item.cuisine}}
-                - {{ createSpendyText(item.spendyLevel) }} - Outdoor seating:<span ng-if="item.outdoorSeating === true"><span class="glyphicon glyphicon-sunglasses"></span></span><span ng-if="item.outdoorSeating !== true"><span class="glyphicon glyphicon-thumbs-down"></span></span>&nbsp;&nbsp;&nbsp;|<span ng-click="editing = true" class="glyphicon glyphicon-cog clicky"></span> <a ng-click="deleteRestaurant(item)"><span class="glyphicon glyphicon-remove clicky"></span></a>
+                <a href="{{item.website}}">
+                  {{item.name}}</a> -
+                  {{item.cuisine}} -
+                  {{ createSpendyText(item.spendyLevel) }} -
+                  Outdoor seating:
+                  <span ng-if="item.outdoorSeating === true">
+                    <span class="glyphicon glyphicon-sunglasses"></span>
+                  </span>
+                  <span ng-if="item.outdoorSeating !== true">
+                    <span class="glyphicon glyphicon-thumbs-down"></span>
+                  </span>&nbsp;&nbsp;&nbsp;|
+                  <span ng-click="editing = true" class="glyphicon glyphicon-cog clicky"></span>
+                  <a ng-click="deleteRestaurant(item)">
+                    <span class="glyphicon glyphicon-remove clicky"></span>
+                  </a>
               </span>
+
               <span class="form-group" ng-show="editing" ng-submit="editing = false">
                 <form class="form-inline" role="form">
                   <input type="text" class="form-control input-sm" ng-model="item.name" placeholder="Edit name">
@@ -41,6 +56,7 @@
                   <button class="btn btn-success btn-sm" type="submit">Save</button>
                 </form>
               </span>
+
             </li>
           </ul>
         </div>
@@ -58,6 +74,7 @@
         <div class="col-md-12">
           <h3>Add Restaurant</h3>
           <form ng-submit="addRestaurant()" class="form-inline" id="new-restaurant" role="form">
+            
             <div class="form-group">
               <input type="text" class="form-control" ng-model="restaurantName" placeholder="Name" required="true">
               <input type="text" class="form-control" ng-model="restaurantWebsite" placeholder="Website">
@@ -72,8 +89,10 @@
               </select>
             <button type="submit" class="btn btn-info">Submit</button>
           </div>
+
           <br>
           <input type="checkbox" class="form-control input-sm" ng-model="restaurantOutdoorSeating"> Outdoor seating?
+
           </form>
         </div>
       </div>
